@@ -121,9 +121,11 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     function($state, $window) {
         $window.addEventListener('LaunchUrl', function(event) {
             // gets page name from url
-            var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
+            var page =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[1];
+            var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
             // redirects to page specified in url
-            $state.go('app.'+ page, {id: 5712})
+            alert ("page:" +page, "id:" +id);
+            $state.go('app.'+ page, {id: id});
         });
     }
 ]);
