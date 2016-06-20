@@ -17,9 +17,6 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    var handleOpenURL = function(url) {
-        alert("RECEIVED URL: " + url);
-    };    
   });
 })
 
@@ -126,8 +123,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             // gets page name from url
             var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
             // redirects to page specified in url
-            alert("received: " + page +id);
-            $state.go('app.'+ page, {id: id})
+            $state.go('app.'+ page, {id: 5712})
         });
     }
 ]);
