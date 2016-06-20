@@ -17,6 +17,9 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    var handleOpenURL = function(url) {
+        alert("RECEIVED URL: " + url);
+    };    
   });
 })
 
