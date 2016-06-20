@@ -126,7 +126,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
                 // gets page name from url
                 var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
                 // redirects to page specified in url
-                $state.go('tab.'+ page, {});
+                $state.go('app.'+ page, {});
             });
         }
     ]);
