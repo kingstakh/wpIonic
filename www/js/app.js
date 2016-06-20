@@ -124,7 +124,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             var page =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[1];
             var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
             // redirects to page specified in url
-            alert ("id:" +id);
+            // alert ("id:" +id);
             $state.go('app.'+ page, {'postId': + id});
         });
     }
@@ -132,7 +132,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 
 function handleOpenURL(url) {
     setTimeout( function() {
-      alert("received url: " + url);
+    //  alert("received url: " + url);
         var event = new CustomEvent('LaunchUrl', {detail: {'url': url}});
         window.dispatchEvent(event);
     }, 0);
