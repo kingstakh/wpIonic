@@ -121,15 +121,15 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 })
 
 .run(['$state', '$window',
-        function($state, $window) {
-            $window.addEventListener('LaunchUrl', function(event) {
-                // gets page name from url
-                var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
-                // redirects to page specified in url
-                $state.go('app.post', {url: '/posts/'+ page''});
-            });
-        }
-    ]);
+    function($state, $window) {
+        $window.addEventListener('LaunchUrl', function(event) {
+            // gets page name from url
+            var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
+            // redirects to page specified in url
+            $state.go('app.'+ page, {});
+        });
+    }
+]);
 
 function handleOpenURL(url) {
     setTimeout( function() {
