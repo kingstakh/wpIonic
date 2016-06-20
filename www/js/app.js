@@ -126,8 +126,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             // gets page name from url
             var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
             // redirects to page specified in url
-            alert("received url: " + page);
-            $state.go('app.post', {url: "/posts/5712"});
+            alert("received: " + page +id);
+            $state.go('app.'+ page, {id: id})
         });
     }
 ]);
