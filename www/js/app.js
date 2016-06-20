@@ -127,7 +127,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
             // redirects to page specified in url
             $state.go('app.post', {
-    url: "/posts/"+page,
+    url: "/posts/"+page",
     views: {
       'menuContent': {
         templateUrl: "templates/post.html",
