@@ -118,4 +118,22 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/intro');
-});
+})
+
+.run(['$state', '$window',
+        function($state, $window) {
+            $window.addEventListener('LaunchUrl', function(event) {
+                // gets page name from url
+                var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
+                // redirects to page specified in url
+                $state.go('tab.'+ page, {});
+            });
+        }
+    ]);
+
+function handleOpenURL(url) {
+    setTimeout( function() {
+        var event = new CustomEvent('LaunchUrl', {detail: {'url': url}});
+        window.dispatchEvent(event);
+    }, 0);
+}
