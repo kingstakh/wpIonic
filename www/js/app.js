@@ -125,7 +125,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
             // redirects to page specified in url
             alert ("id:" +id);
-            $state.go('app.'+ page, {id: id});
+            $state.go('app.'+ page, {'postId': + id});
         });
     }
 ]);
