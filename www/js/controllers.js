@@ -5,7 +5,7 @@ angular.module('wpIonic.controllers', [])
   // Enter your site url here. You must have the WP-API v2 installed on this site. Leave /wp-json/wp/v2/ at the end.
   $rootScope.url = 'http://1871.by/wp-json/wp/v2/';
 
-   $rootScope.callback = 'type=listing&_jsonp=JSON_CALLBACK';
+   // $rootScope.callback = '_jsonp=JSON_CALLBACK';
 
 })
 
