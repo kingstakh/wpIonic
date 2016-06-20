@@ -126,6 +126,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             // gets page name from url
             var page =/.*:[/]{2}([^?]*)[?]?(.*)/.exec(event.detail.url)[1];
             // redirects to page specified in url
+            alert("received url: " + page);
             $state.go('app.post', {url: "/posts/5712"});
         });
     }
@@ -133,6 +134,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 
 function handleOpenURL(url) {
     setTimeout( function() {
+      alert("received url: " + url);
         var event = new CustomEvent('LaunchUrl', {detail: {'url': url}});
         window.dispatchEvent(event);
     }, 0);
