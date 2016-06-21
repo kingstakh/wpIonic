@@ -17,16 +17,6 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    
-    var notificationOpenedCallback = function(jsonData) {
-      alert("Notification received:\n" + JSON.stringify(jsonData));
-      console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-    }
-    
-    // Update with your OneSignal AppId and googleProjectNumber before running.
-    window.plugins.OneSignal.init("a35c1178-2390-4c70-866c-78d93cffc4be",
-                                   {googleProjectNumber: "281905587763"},
-                                   notificationOpenedCallback)
   });
 })
 
@@ -147,3 +137,20 @@ function handleOpenURL(url) {
         window.dispatchEvent(event);
     }, 0);
 }
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {    
+    // Enable to debug issues.
+    // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+    
+    var notificationOpenedCallback = function(jsonData) {
+      alert("Notification received:\n" + JSON.stringify(jsonData));
+      console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+    };
+    
+    // Update with your OneSignal AppId and googleProjectNumber before running.
+    window.plugins.OneSignal.init("a35c1178-2390-4c70-866c-78d93cffc4be",
+                                   {googleProjectNumber: "281905587763"},
+                                   notificationOpenedCallback);
+  });
+})
