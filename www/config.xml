@@ -8,9 +8,6 @@
 	<!--gap:platform name="ios" /-->
 	<gap:platform name="android" />
 
-	<gap:plugin name="onesignal-cordova-plugin" source="npm" />
-	<!-- Recommend the newest cli but requires cli-5.1.1+ and gradle for Android. -->
-	<!-- If the below settings are not compatible with your project set the "PGB ANT" version above. -->
 	<preference name="phonegap-version" value="3.7.0" />
 	<preference name="targetSdkVersion" value="14" />
 
