@@ -9,7 +9,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     var notificationOpenedCallback = function(jsonData) {
-      alert("Notification received:\n" + JSON.stringify(jsonData));
+      //alert("Notification received:\n" + JSON.stringify(jsonData));
       console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
     };
     
@@ -18,7 +18,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
                                    {googleProjectNumber: "743766706780"},
                                    notificationOpenedCallback); 
     // Show an alert box if a notification comes in when the user is in your app.
-    window.plugins.OneSignal.enableInAppAlertNotification(true);
+    window.plugins.OneSignal.enableInAppAlertNotification(false);
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
