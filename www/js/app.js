@@ -23,8 +23,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     };
     
     // Update with your OneSignal AppId and googleProjectNumber before running.
-    window.plugins.OneSignal.init("a35c1178-2390-4c70-866c-78d93cffc4be",
-                                   {googleProjectNumber: "281905587763"},
+    window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
+                                   {googleProjectNumber: "743766706780"},
                                    notificationOpenedCallback);    
   });
 })
