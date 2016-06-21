@@ -15,6 +15,7 @@
 	<preference name="targetSdkVersion" value="14" />
 
 	<!--feature name="http://api.phonegap.com/1.0/device" / -->
+	<gap:plugin name="com.onesignal.plugins.onesignal" version="1.9.0" />
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
