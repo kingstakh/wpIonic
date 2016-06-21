@@ -135,8 +135,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             // gets page name from url
             var page =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[1];
             var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
+            // var postID =/.*[/][?]..([^?]*)[?]?/.exec(event.detail.url)[1]; // http://1871.by/?p=5712           
             // redirects to page specified in url
-            // alert ("id:" +id);
             $state.go('app.'+ page, {'postId': + id});
         });
     }
