@@ -16,7 +16,16 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }
+    };
+    var notificationOpenedCallback = function(jsonData) {
+      alert("Notification received:\n" + JSON.stringify(jsonData));
+      console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+    };
+    
+    // Update with your OneSignal AppId and googleProjectNumber before running.
+    window.plugins.OneSignal.init("a35c1178-2390-4c70-866c-78d93cffc4be",
+                                   {googleProjectNumber: "281905587763"},
+                                   notificationOpenedCallback);    
   });
 })
 
