@@ -16,7 +16,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    };
+    }
     var notificationOpenedCallback = function(jsonData) {
       alert("Notification received:\n" + JSON.stringify(jsonData));
       console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
@@ -25,7 +25,9 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     // Update with your OneSignal AppId and googleProjectNumber before running.
     window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
                                    {googleProjectNumber: "743766706780"},
-                                   notificationOpenedCallback);    
+                                   notificationOpenedCallback); 
+    // Show an alert box if a notification comes in when the user is in your app.
+    window.plugins.OneSignal.enableInAppAlertNotification(true);
   });
 })
 
