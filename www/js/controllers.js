@@ -330,7 +330,7 @@ angular.module('wpIonic.controllers', [])
   
     $timeout( function() {
 
-      $scope.loadPosts();
+      $scope.loadCategory();
 
       //Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
