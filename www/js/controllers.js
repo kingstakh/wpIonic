@@ -175,6 +175,172 @@ angular.module('wpIonic.controllers', [])
     
 })
 
+.controller('CategoriesCtrl', function( $scope, $http, DataLoader, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+
+  var categoriesApi = $rootScope.url + 'categories';
+
+  $scope.moreItems = false;
+
+  $scope.loadCategories = function() {
+
+    // Get all of our posts
+    DataLoader.get( categoriesApi ).then(function(response) {
+
+      $scope.categories = response.data;
+
+      $scope.moreItems = true;
+
+      $log.log(categoriesApi, response.data);
+
+    }, function(response) {
+      $log.log(categoriesApi, response.data);
+    });
+
+  }
+
+  // Load posts on page load
+  $scope.loadCategories();
+
+  paged = 2;
+
+  // Load more (infinite scroll)
+  $scope.loadMore = function() {
+
+    if( !$scope.moreItems ) {
+      return;
+    }
+
+    var pg = paged++;
+
+    $log.log('loadMore ' + pg );
+
+    $timeout(function() {
+
+      DataLoader.get( categoriesApi + '?page=' + pg ).then(function(response) {
+
+        angular.forEach( response.data, function( value, key ) {
+          $scope.categories.push(value);
+        });
+
+        if( response.data.length <= 0 ) {
+          $scope.moreItems = false;
+        }
+      }, function(response) {
+        $scope.moreItems = false;
+        $log.error(response);
+      });
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+      $scope.$broadcast('scroll.resize');
+
+    }, 1000);
+
+  }
+
+  $scope.moreDataExists = function() {
+    return $scope.moreItems;
+  }
+
+  // Pull to refresh
+  $scope.doRefresh = function() {
+  
+    $timeout( function() {
+
+      $scope.loadCategories();
+
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    
+    }, 1000);
+      
+  };
+    
+})
+
+.controller('CategoryCtrl', function( $scope, $stateParams, $http, DataLoader, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+  
+  $scope.itemID = $stateParams.categoryId;
+
+  var categoryApi = $rootScope.url + 'posts/?filter[cat]=' + $scope.itemID;
+
+  $scope.moreItems = false;
+
+  $scope.loadCategory = function() {
+
+    // Get all of our posts
+    DataLoader.get( categoryApi ).then(function(response) {
+
+      $scope.category = response.data;
+
+      $scope.moreItems = true;
+
+      $log.log(categoryApi, response.data);
+
+    }, function(response) {
+      $log.log(categoryApi, response.data);
+    });
+
+  }
+
+  // Load posts on page load
+  $scope.loadCategory();
+
+  paged = 2;
+
+  // Load more (infinite scroll)
+  $scope.loadMore = function() {
+
+    if( !$scope.moreItems ) {
+      return;
+    }
+
+    var pg = paged++;
+
+    $log.log('loadMore ' + pg );
+
+    $timeout(function() {
+
+      DataLoader.get( categoryApi + '?page=' + pg ).then(function(response) {
+
+        angular.forEach( response.data, function( value, key ) {
+          $scope.posts.push(value);
+        });
+
+        if( response.data.length <= 0 ) {
+          $scope.moreItems = false;
+        }
+      }, function(response) {
+        $scope.moreItems = false;
+        $log.error(response);
+      });
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+      $scope.$broadcast('scroll.resize');
+
+    }, 1000);
+
+  }
+
+  $scope.moreDataExists = function() {
+    return $scope.moreItems;
+  }
+
+  // Pull to refresh
+  $scope.doRefresh = function() {
+  
+    $timeout( function() {
+
+      $scope.loadPosts();
+
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    
+    }, 1000);
+      
+  };
+    
+})
+
 .controller('BookmarksCtrl', function( $scope, $http, DataLoader, $timeout, $rootScope, $log, Bookmark, CacheFactory ) {
 
   $scope.$on('$ionicView.enter', function(e) {
