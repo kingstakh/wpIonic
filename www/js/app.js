@@ -18,13 +18,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   if (jsonData.additionalData) {
     if (jsonData.additionalData.myappurl)
     alert("Notification received:\n" + jsonData.additionalData.myappurl);
-    .run(['$state', '$window',
-        function($state, $window) {
-            $window.addEventListener('LaunchUrl', function(event) {
-                $state.go('app.post', {'postId': + jsonData.additionalData.myappurl});
-            });
-        }
-    ])
+    $window.location.href = jsonData.additionalData.myappurl;
   }
 }
     
