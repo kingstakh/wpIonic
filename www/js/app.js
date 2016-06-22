@@ -12,9 +12,9 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
     var notificationOpenedCallback = function(jsonData) {
       if (jsonData.additionalData) {
-        if (jsonData.additionalData.myappurl)
-        // alert("Notification received:\n" + jsonData.additionalData.myappurl);
-         $state.go('app.post', {'postId': + jsonData.additionalData.myappurl});
+        if (jsonData.additionalData.postid && jsonData.additionalData.postype)
+        alert("Notification received:\n" + jsonData.additionalData.postid + jsonData.additionalData.postype);
+         $state.go('app.post', {'postId': + jsonData.additionalData.postid});
       }
     }
     
