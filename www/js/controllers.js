@@ -300,7 +300,7 @@ angular.module('wpIonic.controllers', [])
 
     $timeout(function() {
 
-      DataLoader.get( categoryApi + '?page=' + pg ).then(function(response) {
+      DataLoader.get( categoryApi + '&page=' + pg ).then(function(response) {
 
         angular.forEach( response.data, function( value, key ) {
           $scope.posts.push(value);
