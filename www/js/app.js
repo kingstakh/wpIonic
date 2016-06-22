@@ -18,7 +18,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   if (jsonData.additionalData) {
     if (jsonData.additionalData.myappurl)
     alert("Notification received:\n" + jsonData.additionalData.myappurl);
-    $state.go('app.settings');
+    var postID = jsonData.additionalData.myappurl;
   }
 }
     
@@ -158,6 +158,13 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/intro');
 })
+
+.run(['$state', '$window',
+    function($state, $window) {
+            $state.go('app.post', {'postId': + postId});
+        );
+    }
+]);
 
 .run(['$state', '$window',
     function($state, $window) {
