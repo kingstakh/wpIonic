@@ -14,7 +14,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       if (jsonData.additionalData) {
         if (jsonData.additionalData.postid && jsonData.additionalData.postype)
         alert("Notification received:\n" + jsonData.additionalData.postid + jsonData.additionalData.postype);
-         $state.go('app.post', {'postId': + jsonData.additionalData.postid});
+         $state.go('app.'+ jsonData.additionalData.postype, {'postId': + jsonData.additionalData.postid});
       }
     }
     
