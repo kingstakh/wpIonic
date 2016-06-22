@@ -1,0 +1,20 @@
+<ion-view view-title="Categories">
+  <ion-content>
+  <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+	<ion-list>
+		<ion-item class="item-icon-right" ng-repeat="category in categories track by $index" ng-if="category.count > 0" href="#/app/categories/{{category.id}}" track>
+			<h2>{{category.name}}<span class="badge badge-assertive">{{category.count}}</span></h2>
+			<p ng-if="category.description">{{category.description}}</p>
+			<i class="icon ion-chevron-right icon-accessory"></i>
+		</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll
+	ng-if="moreDataExists()"
+    on-infinite="loadMore()"
+    distance="1%"
+    immediate-check="false">
+  </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>
