@@ -8,10 +8,19 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    var notificationOpenedCallback = function(jsonData) {
-      alert("Notification received:\n" + JSON.stringify(jsonData));
-      console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-    };
+  //  var notificationOpenedCallback = function(jsonData) {
+  //    alert("Notification received:\n" + JSON.stringify(jsonData));
+  //    console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+  //  };
+  
+  // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
+ var notificationOpenedCallback = function(jsonData) {
+  if (jsonData.additionalData) {
+    if (jsonData.additionalData.myappurl)
+    alert("Notification received:\n" + JSON.stringify(jsonData));
+      location.href = jsonData.additionalData.myappurl;
+  }
+}
     
     // Update with your OneSignal AppId and googleProjectNumber before running.
     window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
