@@ -18,7 +18,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   if (jsonData.additionalData) {
     if (jsonData.additionalData.myappurl)
     alert("Notification received:\n" + jsonData.additionalData.myappurl);
-    $location.path('/settings');
+    $state.go('/settings');
   }
 }
     
