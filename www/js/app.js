@@ -13,7 +13,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     var notificationOpenedCallback = function(jsonData) {
       if (jsonData.additionalData) {
         if (jsonData.additionalData.postid && jsonData.additionalData.postype)
-        alert("Notification received:\n" + jsonData.additionalData.postid + jsonData.additionalData.posttype);
+        alert("Notification received:\n" + jsonData.additionalData.posttype);
          $state.go('app.post', {'postId': + jsonData.additionalData.postid});
       }
     }
