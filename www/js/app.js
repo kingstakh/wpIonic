@@ -9,7 +9,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     var notificationOpenedCallback = function(jsonData) {
-    // alert("Notification received:\n" + JSON.stringify(jsonData));
+      alert("Notification received:\n" + JSON.stringify(jsonData));
       console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
     };
     
@@ -18,7 +18,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
                                    {googleProjectNumber: "743766706780"},
                                    notificationOpenedCallback); 
     // Show an alert box if a notification comes in when the user is in your app.
-    window.plugins.OneSignal.enableInAppAlertNotification(false);
+    window.plugins.OneSignal.enableInAppAlertNotification(true);
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -77,6 +77,17 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       }
     }
   })
+  
+ // this is the first sub view, notice menuContent under 'views', which is loaded through menu.html
+  .state('app.categories', {
+    url: "/categories",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/categories.html",
+        controller: 'CategoriesCtrl'
+      }
+    }
+  })  
 
   .state('app.bookmarks', {
     url: "/bookmarks",
@@ -97,7 +108,17 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       }
     }
   })
-
+  
+  .state('app.category', {
+    url: "/categories/:categoryId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/category.html",
+        controller: 'CategoryCtrl'
+      }
+    }
+  })
+  
   .state('app.custom', {
     url: "/custom",
     views: {
@@ -135,8 +156,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
             // gets page name from url
             var page =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[1];
             var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
-            // var postID =/.*[/][?]..([^?]*)[?]?/.exec(event.detail.url)[1]; // http://1871.by/?p=5712           
             // redirects to page specified in url
+            // alert ("id:" +id);
             $state.go('app.'+ page, {'postId': + id});
         });
     }
