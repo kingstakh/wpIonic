@@ -17,8 +17,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
  var notificationOpenedCallback = function(jsonData) {
   if (jsonData.additionalData) {
     if (jsonData.additionalData.myappurl)
-    alert("Notification received:\n" + JSON.stringify(jsonData));
-      location.href = jsonData.additionalData.myappurl;
+    alert("Notification received:\n" + jsonData.additionalData.myappurl);
+    $state.go('app.post', {'postId': + jsonData.additionalData.myappurl});
   }
 }
     
