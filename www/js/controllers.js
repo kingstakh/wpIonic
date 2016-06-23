@@ -99,16 +99,17 @@ angular.module('wpIonic.controllers', [])
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
-  
+   
+    $ionicLoading.show({
+      noBackdrop: true
+    });
+    
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
 
   $scope.loadPosts = function() {
     
-    $ionicLoading.show({
-      noBackdrop: true
-    });
     
     // Get all of our posts
     DataLoader.get( postsApi ).then(function(response) {
