@@ -3,7 +3,7 @@
   {{::post.title.rendered}}
 	</ion-nav-title>
     <ion-nav-buttons side="right">
-      <button class="button button-clear" ng-click="sharePost()">
+      <button class="button button-clear" ng-click="sharePost(post.url)">
         <i class="ion-android-share-alt"></i>
       </button>	
       <button class="button button-clear" ng-click="bookmarkItem(post.id)">
