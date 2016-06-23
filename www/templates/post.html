@@ -2,13 +2,21 @@
 	<ion-nav-title>
   {{::post.title.rendered}}
 	</ion-nav-title>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear" ng-click="bookmarkItem(post.id)">
+        <i class="ion-android-share-alt"></i>
+      </button>	
+      <button class="button button-clear" ng-click="bookmarkItem(post.id)">
+        <i ng-class="{'ion-ios-star': bookmarked, 'ion-ios-star-outline': !bookmarked}"></i>
+      </button>	  
+    </ion-nav-buttons>	
   <ion-content class="padding">
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
   	<div class="card post">
   		<div class="item post-title">
   		<h2 ng-bind-html="post.title.rendered"></h2>
   		</div>
-  		<a href="{{post.better_featured_image.media_details.sizes.large.source_url}}"><img ng-src="{{post.better_featured_image.media_details.sizes.large.source_url}}" class="full-image" /></a>
+  		<img ng-src="{{post.better_featured_image.media_details.sizes.large.source_url}}" class="full-image" />
   		<div class="item item-body" ng-if="content" ng-bind-html="content | html_filters"></div>
     
 
