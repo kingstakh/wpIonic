@@ -6,7 +6,7 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($rootScope, $ionicPlatform, $ionicHistory, $state, $ionicPopup) {
+.run(function($ionicPlatform, $state, $ionicPopup) {
   $ionicPlatform.ready(function() {
       
     // Check for network connection
@@ -23,29 +23,23 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
         });
       }
     }  
-    
-  // Exit App  
-  $ionicPlatform.registerBackButtonAction(function(e){
-    if ($rootScope.backButtonPressedOnceToExit) {
-      ionic.Platform.exitApp();
+    // Exit
+    $ionicPlatform.registerBackButtonAction(function () {
+    var previousView = $ionicHistory.backView();
+    if (!previousView) {
+        navigator.notification.confirm(
+            "Are you sure you want to exit?",
+            function(buttonIndex) {
+                if (buttonIndex === 1) {
+                    ionic.Platform.exitApp();
+                }
+            },
+            'Confirm Exit',
+            ['Yes', 'No']
+        );
     }
+});
 
-    else if ($ionicHistory.backView()) {
-      $ionicHistory.goBack();
-    }
-    else {
-      $rootScope.backButtonPressedOnceToExit = true;
-      window.plugins.toast.showShortCenter(
-        "Press back button again to exit",function(a){},function(b){}
-      );
-      setTimeout(function(){
-        $rootScope.backButtonPressedOnceToExit = false;
-      },2000);
-    }
-    e.preventDefault();
-    return false;
-  },101);
-  
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
     var notificationOpenedCallback = function(jsonData) {
       if (jsonData.additionalData) {
