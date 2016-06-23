@@ -64,8 +64,8 @@ angular.module('wpIonic.controllers', [])
   }
 
   // Sharing
-  $scope.sharePost = function(link){
-    window.plugins.socialsharing.share('Check this post here: ', null, null, link);
+  $scope.sharePost = function( id ){
+    window.plugins.socialsharing.share('Check this post here: ', null, null, id);
   };
   
   // Bookmarking
