@@ -98,12 +98,12 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log, $state) {
   document.addEventListener("offline", onOffline, false);
 
-function onOffline() {
-    alert("Offline");
-}
+  function onOffline() {
+      $state.go('app.custom');
+  }
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
