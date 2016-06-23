@@ -33,7 +33,22 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }	
+    }
+    
+    // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }    
   });
 })
 
