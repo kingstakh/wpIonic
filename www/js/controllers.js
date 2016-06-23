@@ -121,7 +121,7 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
 
   var postsApi = $rootScope.url + 'posts';
 
@@ -209,7 +209,7 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('CategoriesCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+.controller('CategoriesCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log ) {
 
   var categoriesApi = $rootScope.url + 'categories';
 
@@ -297,7 +297,7 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('CategoryCtrl', function( $scope, $stateParams, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+.controller('CategoryCtrl', function( $scope, $stateParams, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log ) {
   
   $scope.itemID = $stateParams.categoryId;
 
