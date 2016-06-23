@@ -1,4 +1,7 @@
-<ion-view view-title="Category">
+<ion-view>
+	<ion-nav-title>
+  {{::post.title.rendered}}
+	</ion-nav-title>	
   <ion-content>
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 	<ion-list>
