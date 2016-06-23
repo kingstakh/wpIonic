@@ -14,6 +14,23 @@ angular.module('wpIonic.services', [])
 
 })
 
+.factory('Connection', function($ionicPopup) {
+      // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }  
+})
+
 .factory('Bookmark', function( CacheFactory ) {
 
   if ( ! CacheFactory.get('bookmarkCache') ) {
