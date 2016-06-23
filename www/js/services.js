@@ -20,7 +20,7 @@ var obj={}
     obj.backcallfun=function(){
   
        $ionicPlatform.registerBackButtonAction(function () {
-          if ($state.current.name == "app.intro") {
+          if ($state.current.name == "app.intro" && $state.current.name == "app.posts") {
             var action= confirm("Do you want to Exit?");
              if(action){
                 navigator.app.exitApp();
