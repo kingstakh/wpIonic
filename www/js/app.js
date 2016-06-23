@@ -64,7 +64,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     else {
       $rootScope.backButtonPressedOnceToExit = true;
       window.plugins.toast.showShortCenter(
-        "Press back button again to exit",function(a){},function(b){}
+        "Press back button again to exit", function(a){}, function(b){}
       );
       setTimeout(function(){
         $rootScope.backButtonPressedOnceToExit = false;
