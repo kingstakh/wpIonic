@@ -102,9 +102,9 @@ angular.module('wpIonic.controllers', [])
 
     // Check if is Offline
     document.addEventListener("offline", function(){
-
+      $ionicLoading.show({
           template: 'Connection lost ...'
-
+      });  
       /* 
        * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
        * If you want to block the use of the app till the user gets internet again, please delete this line.       
