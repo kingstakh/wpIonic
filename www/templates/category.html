@@ -4,6 +4,7 @@
 	<ion-list>
 		<ion-item class="item-icon-right" ng-repeat="post in category track by $index" href="#/app/posts/{{post.id}}" track>
 			<!-- <img ng-if="post.featured_image" ng-src="{{post._embedded['http://v2.wp-api.org/attachment'][0][$index].source_url}}" class="alignleft" /> -->
+			<img ng-src="{{post.better_featured_image.media_details.sizes.thumbnail.source_url}}" class="alignleft" />
 			<h2 ng-bind-html="post.title.rendered"></h2>
 			<p ng-if="post.excerpt.rendered" ng-bind-html="post.excerpt.rendered"></p>
 			<i class="icon ion-chevron-right icon-accessory"></i>
