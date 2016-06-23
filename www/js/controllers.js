@@ -64,18 +64,9 @@ angular.module('wpIonic.controllers', [])
   }
 
   // Sharing
-  $scope.sharePost = function () {
-	 
-	window.plugins.share.show(
-	  {
-		  subject: ''+ $scope.item.title.rendered +'',
-		  image: ''+ $scope.item.better_featured_image.media_details.sizes.large.source_url +'',
-		  text: ''+ $scope.item.link +''
-	  },
-	  function() {}, // Success function
-	  function() {alert('Share failed')} // Failure function
-	);
-  }
+  $scope.sharePost = function(link){
+    window.plugins.socialsharing.share('Check this post here: ', null, null, link);
+  };
   
   // Bookmarking
   $scope.bookmarked = Bookmark.check( $scope.itemID );
