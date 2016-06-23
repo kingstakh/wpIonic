@@ -6,7 +6,7 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($ionicPlatform, $state, $ionicPopup) {
+.run(function($ionicPlatform, $state, $ionicPopup, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
       
     // Check for network connection
@@ -50,7 +50,28 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-  });
+  }
+  // Back button function
+  $ionicPlatform.registerBackButtonAction(function(e){
+    if ($rootScope.backButtonPressedOnceToExit) {
+      ionic.Platform.exitApp();
+    }
+
+    else if ($ionicHistory.backView()) {
+      $ionicHistory.goBack();
+    }
+    else {
+      $rootScope.backButtonPressedOnceToExit = true;
+      window.plugins.toast.showShortCenter(
+        "Press back button again to exit",function(a){},function(b){}
+      );
+      setTimeout(function(){
+        $rootScope.backButtonPressedOnceToExit = false;
+      },2000);
+    }
+    e.preventDefault();
+    return false;
+  },101););
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
@@ -169,28 +190,4 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/intro');
-})
-
-.run(function($rootScope, $ionicPlatform, $ionicHistory){
-  $ionicPlatform.registerBackButtonAction(function(e){
-    if ($rootScope.backButtonPressedOnceToExit) {
-      ionic.Platform.exitApp();
-    }
-
-    else if ($ionicHistory.backView()) {
-      $ionicHistory.goBack();
-    }
-    else {
-      $rootScope.backButtonPressedOnceToExit = true;
-      window.plugins.toast.showShortCenter(
-        "Press back button again to exit",function(a){},function(b){}
-      );
-      setTimeout(function(){
-        $rootScope.backButtonPressedOnceToExit = false;
-      },2000);
-    }
-    e.preventDefault();
-    return false;
-  },101);
-
 })
