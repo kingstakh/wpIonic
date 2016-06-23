@@ -20,7 +20,7 @@
 	<gap:plugin name="cordova-plugin-googleplayservices" source="npm" />
 	<gap:plugin name="cordova-plugin-android-support-v4" source="npm" />
 	
-	<gap:plugin name="cordova-plugin-exitapp" source="npm" />
+	<!--gap:plugin name="cordova-plugin-exitapp" source="npm" / -->
 
 	<!--feature name="http://api.phonegap.com/1.0/device" / -->
 	<gap:plugin name="org.apache.cordova.device" />
