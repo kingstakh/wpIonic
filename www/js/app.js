@@ -23,22 +23,6 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
         });
       }
     }  
-    // Exit
-    $ionicPlatform.registerBackButtonAction(function () {
-    var previousView = $ionicHistory.backView();
-    if (!previousView) {
-        navigator.notification.confirm(
-            "Are you sure you want to exit?",
-            function(buttonIndex) {
-                if (buttonIndex === 1) {
-                    ionic.Platform.exitApp();
-                }
-            },
-            'Confirm Exit',
-            ['Yes', 'No']
-        );
-    }
-});
 
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
     var notificationOpenedCallback = function(jsonData) {
