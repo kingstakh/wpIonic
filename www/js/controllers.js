@@ -63,6 +63,20 @@ angular.module('wpIonic.controllers', [])
     // $scope.comments = $scope.post._embedded['replies'][0];
   }
 
+  // Sharing
+  $scope.sharePost = function () {
+	 
+	window.plugins.share.show(
+	  {
+		  subject: ''+ $scope.item.title.rendered +'',
+		  image: ''+ $scope.item.better_featured_image.media_details.sizes.large.source_url +'',
+		  text: ''+ $scope.item.link +''
+	  },
+	  function() {}, // Success function
+	  function() {alert('Share failed')} // Failure function
+	);
+  }
+  
   // Bookmarking
   $scope.bookmarked = Bookmark.check( $scope.itemID );
 
