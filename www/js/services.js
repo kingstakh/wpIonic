@@ -14,6 +14,30 @@ angular.module('wpIonic.services', [])
 
 })
 
+.factory('backcallFactory', ['$state','$ionicPlatform','$ionicHistory','$timeout',function($state,$ionicPlatform,$ionicHistory,$timeout){
+ 
+var obj={}
+    obj.backcallfun=function(){
+  
+       $ionicPlatform.registerBackButtonAction(function () {
+          if ($state.current.name == "app.home") {
+            var action= confirm("Do you want to Exit?");
+             if(action){
+                navigator.app.exitApp();
+              }//no else here just if
+      
+      }else{
+            $ionicHistory.nextViewOptions({
+                 disableBack: true
+                });
+        $state.go('app.home');
+        //go to home page
+     }
+        }, 100);//registerBackButton
+}//backcallfun
+return obj;
+}])
+
 .factory('Bookmark', function( CacheFactory ) {
 
   if ( ! CacheFactory.get('bookmarkCache') ) {
