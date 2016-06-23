@@ -171,23 +171,26 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   $urlRouterProvider.otherwise('/app/intro');
 })
 
-.run(['$state', '$window',
-    function($state, $window) {
-        $window.addEventListener('LaunchUrl', function(event) {
-            // gets page name from url
-            var page =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[1];
-            var id =/.*:[/]{2}([^?]*)[?]?[/]{1}([^?]*)[?]?/.exec(event.detail.url)[2];
-            // redirects to page specified in url
-            // alert ("id:" +id);
-            $state.go('app.'+ page, {'postId': + id});
-        });
+.run(function($rootScope, $ionicPlatform, $ionicHistory){
+  $ionicPlatform.registerBackButtonAction(function(e){
+    if ($rootScope.backButtonPressedOnceToExit) {
+      ionic.Platform.exitApp();
     }
-]);
 
-function handleOpenURL(url) {
-    setTimeout( function() {
-    //  alert("received url: " + url);
-        var event = new CustomEvent('LaunchUrl', {detail: {'url': url}});
-        window.dispatchEvent(event);
-    }, 0);
-}
+    else if ($ionicHistory.backView()) {
+      $ionicHistory.goBack();
+    }
+    else {
+      $rootScope.backButtonPressedOnceToExit = true;
+      window.plugins.toast.showShortCenter(
+        "Press back button again to exit",function(a){},function(b){}
+      );
+      setTimeout(function(){
+        $rootScope.backButtonPressedOnceToExit = false;
+      },2000);
+    }
+    e.preventDefault();
+    return false;
+  },101);
+
+})
