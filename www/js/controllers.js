@@ -391,8 +391,9 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicHistory) {
-
+.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicHistory, backcallFactory) {
+  
+  backcallFactory.backcallfun();
   // $ionicSlideBoxDelegate.update();
 
   $ionicHistory.nextViewOptions({
