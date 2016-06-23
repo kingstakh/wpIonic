@@ -1,6 +1,6 @@
 angular.module('wpIonic.controllers', [])
 
-.controller('networkController', function($scope){
+.controller('networkController', function($ionicLoading, $scope){
 
     // Check if is Offline
     document.addEventListener("offline", function(){
