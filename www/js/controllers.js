@@ -1,6 +1,8 @@
 angular.module('wpIonic.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log ) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log, backcallFactory) {
+  
+  backcallFactory.backcallfun();
   
   // Enter your site url here. You must have the WP-API v2 installed on this site. Leave /wp-json/wp/v2/ at the end.
   $rootScope.url = 'http://1871.by/wp-json/wp/v2/';
@@ -98,10 +100,8 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log, backcallFactory) {
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
   
-  backcallFactory.backcallfun();
-
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
@@ -393,9 +393,8 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicHistory, backcallFactory) {
-  
-  backcallFactory.backcallfun();
+.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicHistory) {
+
   // $ionicSlideBoxDelegate.update();
 
   $ionicHistory.nextViewOptions({
