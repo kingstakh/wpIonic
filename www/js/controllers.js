@@ -98,17 +98,23 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log, $state) {
-  document.addEventListener("offline", onOffline, false);
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
 
-  function onOffline() {
-     $ionicLoading.show({
-      template: 'Connection lost...'
-    });
-  }
-  function onOnline() {
-     $ionicLoading.hide(); 
-  }
+    // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }
+
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
