@@ -98,7 +98,7 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
 
   var postsApi = $rootScope.url + 'posts';
 
