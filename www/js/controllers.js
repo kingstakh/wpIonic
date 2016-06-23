@@ -102,7 +102,12 @@ angular.module('wpIonic.controllers', [])
   document.addEventListener("offline", onOffline, false);
 
   function onOffline() {
-      $state.go('app.custom');
+     $ionicLoading.show({
+      template: 'Connection lost...'
+    });
+  }
+  function onOffline() {
+     $ionicLoading.hide(); 
   }
   var postsApi = $rootScope.url + 'posts';
 
