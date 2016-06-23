@@ -25,7 +25,7 @@ angular.module('wpIonic.services', [])
   return {
     set: function(id) {
       bookmarkCache.put( id, 'bookmarked' );
-      window.plugins.toast.showShortTop(
+      window.plugins.toast.showShortCenter(
         "Bookmarked", function(a){}, function(b){}
       );
     },
@@ -44,7 +44,7 @@ angular.module('wpIonic.services', [])
     },
     remove: function(id) {
       bookmarkCache.remove(id);
-      window.plugins.toast.showShortTop(
+      window.plugins.toast.showShortCenter(
         "Removed", function(a){}, function(b){}
       );      
     }
