@@ -106,7 +106,7 @@ angular.module('wpIonic.controllers', [])
       template: 'Connection lost...'
     });
   }
-  function onOffline() {
+  function onOnline() {
      $ionicLoading.hide(); 
   }
   var postsApi = $rootScope.url + 'posts';
@@ -115,12 +115,13 @@ angular.module('wpIonic.controllers', [])
 
   $scope.loadPosts = function() {
     
+    $ionicLoading.show({
+      noBackdrop: true
+    });    
+    
     // Get all of our posts
     DataLoader.get( postsApi ).then(function(response) {
       
-    $ionicLoading.show({
-      noBackdrop: true
-    });
       $scope.posts = response.data;
 
       $scope.moreItems = true;
