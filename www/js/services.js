@@ -20,7 +20,7 @@ var obj={}
     obj.backcallfun=function(){
   
        $ionicPlatform.registerBackButtonAction(function () {
-          if ($state.current.name == "app.intro" && $state.current.name == "app.posts") {
+          if ($state.current.name == "app.intro" || $state.current.name == "app.posts") {
             var action= confirm("Do you want to Exit?");
              if(action){
                 navigator.app.exitApp();
@@ -28,9 +28,9 @@ var obj={}
       
       }else{
             $ionicHistory.nextViewOptions({
-                 disableBack: true
+                 disableBack: false
                 });
-        $state.go('app.intro');
+        $state.go('app.posts');
         //go to home page
      }
         }, 100);//registerBackButton
