@@ -105,7 +105,11 @@ angular.module('wpIonic.controllers', [])
   $scope.moreItems = false;
 
   $scope.loadPosts = function() {
-
+    
+    $ionicLoading.show({
+      noBackdrop: true
+    });
+    
     // Get all of our posts
     DataLoader.get( postsApi ).then(function(response) {
 
@@ -114,8 +118,10 @@ angular.module('wpIonic.controllers', [])
       $scope.moreItems = true;
 
       $log.log(postsApi, response.data);
-
+      
+      $ionicLoading.hide();
     }, function(response) {
+      $ionicLoading.hide();      
       $log.log(postsApi, response.data);
     });
 
