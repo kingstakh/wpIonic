@@ -186,15 +186,19 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('CategoriesCtrl', function( $scope, $http, DataLoader, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+.controller('CategoriesCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
 
   var categoriesApi = $rootScope.url + 'categories';
 
   $scope.moreItems = false;
 
   $scope.loadCategories = function() {
-
-    // Get all of our posts
+    
+    $ionicLoading.show({
+      noBackdrop: true
+    });
+    
+    // Get all of our categories
     DataLoader.get( categoriesApi ).then(function(response) {
 
       $scope.categories = response.data;
@@ -203,8 +207,10 @@ angular.module('wpIonic.controllers', [])
 
       $log.log(categoriesApi, response.data);
 
+      $ionicLoading.hide();
     }, function(response) {
       $log.log(categoriesApi, response.data);
+      $ionicLoading.hide();      
     });
 
   }
@@ -268,7 +274,7 @@ angular.module('wpIonic.controllers', [])
     
 })
 
-.controller('CategoryCtrl', function( $scope, $stateParams, $http, DataLoader, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
+.controller('CategoryCtrl', function( $scope, $stateParams, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
   
   $scope.itemID = $stateParams.categoryId;
 
@@ -277,8 +283,12 @@ angular.module('wpIonic.controllers', [])
   $scope.moreItems = false;
 
   $scope.loadCategory = function() {
-
-    // Get all of our posts
+    
+    $ionicLoading.show({
+      noBackdrop: true
+    });
+    
+    // Get all of our posts in category
     DataLoader.get( categoryApi ).then(function(response) {
 
       $scope.category = response.data;
@@ -287,8 +297,10 @@ angular.module('wpIonic.controllers', [])
 
       $log.log(categoryApi, response.data);
 
+      $ionicLoading.hide();
     }, function(response) {
       $log.log(categoryApi, response.data);
+      $ionicLoading.hide();      
     });
 
   }
