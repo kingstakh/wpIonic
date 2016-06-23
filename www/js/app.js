@@ -50,7 +50,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-  }
+  });
   // Back button function
   $ionicPlatform.registerBackButtonAction(function(e){
     if ($rootScope.backButtonPressedOnceToExit) {
@@ -71,7 +71,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     }
     e.preventDefault();
     return false;
-  },101););
+  },101);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
