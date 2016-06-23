@@ -1,5 +1,28 @@
 angular.module('wpIonic.controllers', [])
 
+.controller('networkController', function($scope){
+
+    // Check if is Offline
+    document.addEventListener("offline", function(){
+      $ionicLoading.show({
+          template: 'Connection lost ...'
+      });  
+      /* 
+       * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
+       * If you want to block the use of the app till the user gets internet again, please delete this line.       
+       */
+
+      setTimeout('$ionicLoading.hide()', 8000);  
+
+    }, false);
+
+    document.addEventListener("online", function(){
+      // If you remove the "setTimeout('offlineMessage.hide()', 8000);" you must remove the comment for the line above      
+      // offlineMessage.hide();
+    });
+
+  })
+  
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log) {
   
   // Enter your site url here. You must have the WP-API v2 installed on this site. Leave /wp-json/wp/v2/ at the end.
@@ -99,25 +122,6 @@ angular.module('wpIonic.controllers', [])
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
-
-    // Check if is Offline
-    document.addEventListener("offline", function(){
-      $ionicLoading.show({
-          template: 'Connection lost ...'
-      });  
-      /* 
-       * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
-       * If you want to block the use of the app till the user gets internet again, please delete this line.       
-       */
-
-      setTimeout('$ionicLoading.hide()', 8000);  
-
-    }, false);
-
-    document.addEventListener("online", function(){
-      // If you remove the "setTimeout('offlineMessage.hide()', 8000);" you must remove the comment for the line above      
-      // offlineMessage.hide();
-    });
 
   var postsApi = $rootScope.url + 'posts';
 
