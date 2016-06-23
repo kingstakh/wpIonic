@@ -8,6 +8,7 @@
   		<div class="item post-title">
   		<h2 ng-bind-html="post.title.rendered"></h2>
   		</div>
+  		<a href="{{post.better_featured_image.media_details.sizes.large.source_url}}"><img ng-src="{{post.better_featured_image.media_details.sizes.large.source_url}}" class="full-image" /></a>
   		<div class="item item-body" ng-if="content" ng-bind-html="content | html_filters"></div>
     
 
