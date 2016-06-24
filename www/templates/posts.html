@@ -1,5 +1,5 @@
 <ion-view view-title="Posts">
-  <ion-content>
+  <ion-content ng-if="online_status_string = 'online'">
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 Application is {{online_status_string}}
 	<ion-list>
