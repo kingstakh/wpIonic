@@ -1,7 +1,13 @@
 <ion-view view-title="Posts">
   <ion-content>
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
-	<ion-list>
+	<div ng-if="!posts" class="background-view">
+		<div class="results">
+		<i class="icon ion-android-arrow-up"></i>
+		<h3 class="no-data">Sorry, no data response. Please verify your connection and pull to refresh page.</h3>
+		</div>
+	</div>  
+	<ion-list ng-if="posts">
 		<ion-item class="item-icon-right" ng-repeat="post in posts track by $index" href="#/app/posts/{{post.id}}" track>
 			<!-- <img ng-if="post.featured_image" ng-src="{{post._embedded['http://v2.wp-api.org/attachment'][0][$index].source_url}}" class="alignleft" /> -->
 			<h2 ng-bind-html="post.title.rendered"></h2>
