@@ -1,24 +1,5 @@
 angular.module('wpIonic.controllers', [])
 
-.controller('networkController', function($ionicLoading, $scope){
-
-    // Check if is Offline
-    document.addEventListener("offline", function(){
-$ionicLoading.show({
-    template: '<a href="/posts/">Check</a>',
-    hideOnStageChange: true
-});
-      /* 
-       * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
-       * If you want to block the use of the app till the user gets internet again, please delete this line.       
-       */
-
-      // setTimeout('$ionicLoading.hide()', 8000);  
-
-    }, false);
-
-  })
-  
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log) {
   
   // Enter your site url here. You must have the WP-API v2 installed on this site. Leave /wp-json/wp/v2/ at the end.
@@ -118,7 +99,20 @@ $ionicLoading.show({
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
+    // Check if is Offline
+    document.addEventListener("offline", function(){
+$ionicLoading.show({
+    template: '<a href="/posts/">Check</a>',
+    hideOnStageChange: true
+});
+      /* 
+       * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
+       * If you want to block the use of the app till the user gets internet again, please delete this line.       
+       */
 
+      // setTimeout('$ionicLoading.hide()', 8000);  
+
+    }, false);
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
