@@ -117,14 +117,7 @@ angular.module('wpIonic.controllers', [])
         });
       }
     }
-      /* 
-       * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
-       * If you want to block the use of the app till the user gets internet again, please delete this line.       
-       */
-
-      // setTimeout('$ionicLoading.hide()', 8000);  
-
-    }, false);
+    
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
