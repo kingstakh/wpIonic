@@ -46,7 +46,15 @@ angular.module('wpIonic.controllers', [])
       $ionicLoading.hide();
     }, function(response) {
       $log.error('error', response);
-      $ionicLoading.hide();
+      $timeout( function() {
+        
+        $ionicLoading.hide();
+        
+        window.plugins.toast.showShortCenter(
+          "Sorry, no data response. Please verify your connection and pull to refresh page.", '4000', function(a){}, function(b){}
+        );
+      
+    }, 8000);
     });
 
   }
