@@ -121,8 +121,8 @@ angular.module('wpIonic.controllers', [])
       
       $ionicLoading.hide();
     }, function(response) {
-
       $log.log(postsApi, response.data);
+      setTimeout('$ionicLoading.hide()', 8000);  
     });
 
   }
