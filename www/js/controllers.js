@@ -125,8 +125,11 @@ angular.module('wpIonic.controllers', [])
       $timeout( function() {
         
         $ionicLoading.hide();
-        
+        $scope.loadPosts();
     }, 8000);
+      $timeout( function() {
+        $scope.loadPosts();
+    }, 24000);    
     });
 
   }
