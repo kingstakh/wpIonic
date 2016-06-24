@@ -98,13 +98,25 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
-    // Check if is Offline
-    document.addEventListener("offline", function(){
-$ionicLoading.show({
-    template: '<a href="#/tab/about">Check</a>',
-    hideOnStageChange: true
-});
+.controller('PostsCtrl', function( $scope, $http, $ionicPopup, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
+
+    // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+          if(result) {
+            $state.go($state.current, {}, {reload: true});
+          }          
+        });
+      }
+    }
       /* 
        * With this line of code you can hide the modal in 8 seconds but the user will be able to use your app
        * If you want to block the use of the app till the user gets internet again, please delete this line.       
