@@ -12,6 +12,12 @@
     </ion-nav-buttons>	
   <ion-content class="padding">
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+        <div ng-if="post.length == 0" class="col col-center">
+        <div class="empty-results">
+          <i class="icon ion-bookmark"></i>
+          <h3 class="no-bookmarks">There's nothing here yet. Start exploring!</h3>
+        </div>
+      </div>
   	<div class="card post">
   		<div class="item post-title">
   		<h2 ng-bind-html="post.title.rendered"></h2>
