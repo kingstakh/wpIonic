@@ -1,9 +1,10 @@
 <ion-view view-title="Posts">
   <ion-content>
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
-                          <h1 ng-show="isOnline">I'm online</h1>
-                        <h1 ng-show="! isOnline">I'm offline</h1>
+
 	<ion-list>
+		<div ng-show="online">You're online</div>
+		<div ng-hide="online">You're offline</div>
 		<ion-item class="item-icon-right" ng-repeat="post in posts track by $index" href="#/app/posts/{{post.id}}" track>
 			<!-- <img ng-if="post.featured_image" ng-src="{{post._embedded['http://v2.wp-api.org/attachment'][0][$index].source_url}}" class="alignleft" /> -->
 			<h2 ng-bind-html="post.title.rendered"></h2>
