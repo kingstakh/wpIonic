@@ -9,6 +9,33 @@ angular.module('wpIonic.controllers', [])
 
 })
 
+.controller('NetworkCtrl', function($scope, $cordovaNetwork, $rootScope) {
+    document.addEventListener("deviceready", function () {
+
+        $scope.network = $cordovaNetwork.getNetwork();
+        $scope.isOnline = $cordovaNetwork.isOnline();
+        $scope.$apply();
+
+        // listen for Online event
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+            $scope.isOnline = true;
+            $scope.network = $cordovaNetwork.getNetwork();
+
+            $scope.$apply();
+        })
+
+        // listen for Offline event
+        $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+            console.log("got offline");
+            $scope.isOnline = false;
+            $scope.network = $cordovaNetwork.getNetwork();
+
+            $scope.$apply();
+        })
+
+  }, false);
+});
+
 .controller('PostCtrl', function($scope, $stateParams, DataLoader, $ionicLoading, $rootScope, $sce, CacheFactory, $log, Bookmark, $timeout ) {
 
   if ( ! CacheFactory.get('postCache') ) {
@@ -99,7 +126,7 @@ angular.module('wpIonic.controllers', [])
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
-
+  
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
