@@ -51,7 +51,7 @@ angular.module('wpIonic.controllers', [])
         $ionicLoading.hide();
         
         window.plugins.toast.showShortCenter(
-          "Sorry, no data response. Please verify your connection and pull to refresh page.", '4000', function(a){}, function(b){}
+          "Sorry, no data response. Please verify your connection and pull to refresh page.", "4000", function(a){}, function(b){}
         );
       
     }, 8000);
