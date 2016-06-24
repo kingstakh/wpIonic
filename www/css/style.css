@@ -107,3 +107,18 @@
 .post .item-body p a {
   text-decoration: underline;
 }
+.background-view {
+  height: 100%;
+}
+.background-view .results {
+  height: 100%;
+  text-align: center; 
+}
+.background-view .results .icon {
+  font-size: 170px;
+  color: gray; 
+}
+.background-view .results .no-data{
+  color: gray;
+  font-size: 22px; 
+}
