@@ -12,13 +12,13 @@
     </ion-nav-buttons>	
   <ion-content class="padding">
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
-        <div ng-if="post.length == 0" class="col col-center">
-        <div class="empty-results">
-          <i class="icon ion-bookmark"></i>
-          <h3 class="no-bookmarks">There's nothing here yet. Start exploring!</h3>
-        </div>
-      </div>
-  	<div class="card post">
+	<div ng-if="!post" class="background-view">
+		<div class="results">
+		<i class="icon ion-android-arrow-up"></i>
+		<h3 class="no-data">Sorry, no data response. Please verify your connection and pull to refresh page.</h3>
+		</div>
+	</div>
+  	<div ng-if="post" class="card post">
   		<div class="item post-title">
   		<h2 ng-bind-html="post.title.rendered"></h2>
   		</div>
