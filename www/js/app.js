@@ -60,6 +60,21 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
   },101);
 })
 
+app.run(function($window, $rootScope) {
+      $rootScope.online = navigator.onLine;
+      $window.addEventListener("offline", function() {
+        $rootScope.$apply(function() {
+          $rootScope.online = false;
+        });
+      }, false);
+
+      $window.addEventListener("online", function() {
+        $rootScope.$apply(function() {
+          $rootScope.online = true;
+        });
+      }, false);
+})
+
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
 
   angular.extend(CacheFactoryProvider.defaults, { 
