@@ -6,7 +6,7 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
+.run(function($window, $ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
 
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
@@ -36,7 +36,20 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       StatusBar.styleDefault();
     }
   });
-  
+  // Network check
+      $rootScope.online = navigator.onLine;
+      $window.addEventListener("offline", function() {
+        $rootScope.$apply(function() {
+          $rootScope.online = false;
+        });
+      }, false);
+
+      $window.addEventListener("online", function() {
+        $rootScope.$apply(function() {
+          $rootScope.online = true;
+        });
+      }, false);
+      
   // Back button function
   $ionicPlatform.registerBackButtonAction(function(e){
     if ($rootScope.backButtonPressedOnceToExit) {
@@ -58,21 +71,6 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     e.preventDefault();
     return false;
   },101);
-})
-
-app.run(function($window, $rootScope) {
-      $rootScope.online = navigator.onLine;
-      $window.addEventListener("offline", function() {
-        $rootScope.$apply(function() {
-          $rootScope.online = false;
-        });
-      }, false);
-
-      $window.addEventListener("online", function() {
-        $rootScope.$apply(function() {
-          $rootScope.online = true;
-        });
-      }, false);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
