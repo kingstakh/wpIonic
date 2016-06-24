@@ -99,7 +99,7 @@ angular.module('wpIonic.controllers', [])
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
-$scope.$watch('online', function(newStatus) { ... });  
+
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
