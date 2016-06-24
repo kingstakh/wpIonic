@@ -98,7 +98,7 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
+.controller('PostsCtrl', function( $scope, $ionicPopup, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
 
   var postsApi = $rootScope.url + 'posts';
 
@@ -125,15 +125,22 @@ angular.module('wpIonic.controllers', [])
       $timeout( function() {
         
         $ionicLoading.hide();
-        $scope.loadPosts();
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(result) {
+            $scope.loadPosts();
+          }          
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
     }, 8000);
-      $timeout( function() {
-        $scope.loadPosts();
-    }, 24000);    
     });
 
   }
-
   // Load posts on page load
   $scope.loadPosts();
 
