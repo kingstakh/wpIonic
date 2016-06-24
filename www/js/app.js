@@ -6,27 +6,9 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($ionicPlatform, $state, $rootScope, $ionicHistory, $ionicPopup) {
+.run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
 
-    // Check for network connection
-    if(window.Connection) {
-      if(navigator.connection.type == Connection.NONE) {
-        $ionicPopup.confirm({
-          title: 'No Internet Connection',
-          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
-        })
-        .then(function(result) {
-          if(!result) {
-            ionic.Platform.exitApp();
-          }
-          if(!result) {
-            $state.go($state.current, {}, {reload: true});
-          }          
-        });
-      }
-    }
-    
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
     var notificationOpenedCallback = function(jsonData) {
       if (jsonData.additionalData) {
