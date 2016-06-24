@@ -125,9 +125,12 @@ angular.module('wpIonic.controllers', [])
       $timeout( function() {
         
         $ionicLoading.hide();
+        
         $ionicPopup.confirm({
-          title: 'No Internet Connection',
-          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+          title: 'No Data',
+          content: 'Sorry, no data response. Please verify your connection and try again.',
+          cancelText: 'Exit App',
+          okText: 'Try Again'
         })
         .then(function(result) {
           if(result) {
