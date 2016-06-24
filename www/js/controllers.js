@@ -98,14 +98,8 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, onlineStatus, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
+.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, CacheFactory, $ionicSlideBoxDelegate, $rootScope, $log) {
 
-    $scope.onlineStatus = onlineStatus;
-    
-    $scope.$watch('onlineStatus.isOnline()', function(online) {
-        $scope.online_status_string = online ? 'online' : 'offline';
-    });
-    
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
