@@ -134,20 +134,10 @@ angular.module('wpIonic.controllers', [])
         
         $ionicLoading.hide();
         
-        $ionicPopup.confirm({
-          title: 'No Data',
-          content: 'Sorry, no data response. Please verify your connection and try again.',
-          cancelText: 'Exit App',
-          okText: 'Try Again'
-        })
-        .then(function(result) {
-          if(result) {
-            $scope.loadPosts();
-          }          
-          if(!result) {
-            ionic.Platform.exitApp();
-          }
-        });
+        window.plugins.toast.showShortCenter(
+          "Sorry, no data response. Please verify your connection and pull to refresh page.", "4000", function(a){}, function(b){}
+        );
+      
     }, 8000);
     });
 
