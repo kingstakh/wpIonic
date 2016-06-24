@@ -4,7 +4,7 @@
    <name>WP Ionic</name>
    <description>Ionic app</description>
    <author href="http://scottbolinger.com" email="scott@apppresser.com">Scott Bolinger</author>
-
+   
 	<!--gap:platform name="ios" /-->
 	<gap:platform name="android" />
 
