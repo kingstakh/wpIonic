@@ -102,7 +102,7 @@ angular.module('wpIonic.controllers', [])
     // Check if is Offline
     document.addEventListener("offline", function(){
 $ionicLoading.show({
-    template: '<a href="/posts/">Check</a>',
+    template: '<a href="#/tab/about">Check</a>',
     hideOnStageChange: true
 });
       /* 
