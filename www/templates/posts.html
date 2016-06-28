@@ -6,9 +6,27 @@
 		<i class="icon ion-android-arrow-up"></i>
 		<h3 class="no-data">Pull to refresh page.</h3>
 		</div>
-	</div>  
+	</div>
+	<div ng-if="posts" class="list card" ng-repeat="post in posts track by $index" ng-show="$first" href="#/app/posts/{{post.id}}" track>
+
+	  <div class="item item-avatar">
+		<img ng-src="{{post.better_featured_image.media_details.sizes.thumbnail.source_url}}">
+		<h2 ng-bind-html="post.title.rendered"></h2>
+		<p>{{post.date}}</p>
+	  </div>
+
+	  <div class="item item-body">
+		<img class="full-image" ng-src="{{post.better_featured_image.media_details.sizes.large.source_url}}">
+		<p ng-if="post.excerpt.rendered" ng-bind-html="post.excerpt.rendered | limitTo: 150"></p>
+		<p>
+		  <a href="#" class="subdued">1 Like</a>
+		  <a href="#/app/posts/{{post.id}}" class="subdued">5 Comments</a>
+		</p>
+	  </div>
+
+	</div>
 	<ion-list ng-if="posts">
-		<ion-item class="item-icon-right" ng-repeat="post in posts track by $index" href="#/app/posts/{{post.id}}" track>
+		<ion-item class="item-icon-right" ng-repeat="post in posts track by $index" ng-show="!$first" href="#/app/posts/{{post.id}}" track>
 			<!-- <img ng-if="post.featured_image" ng-src="{{post._embedded['http://v2.wp-api.org/attachment'][0][$index].source_url}}" class="alignleft" /> -->
 			<h2 ng-bind-html="post.title.rendered"></h2>
 			<p ng-if="post.excerpt.rendered" ng-bind-html="post.excerpt.rendered"></p>
