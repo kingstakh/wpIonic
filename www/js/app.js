@@ -6,7 +6,7 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($ionicPlatform, $state) {
+.run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -38,6 +38,27 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     window.plugins.OneSignal.enableInAppAlertNotification(false);
     
     
+  // Back button function
+  $ionicPlatform.registerBackButtonAction(function(e){
+    if ($rootScope.backButtonPressedOnceToExit) {
+      ionic.Platform.exitApp();
+    }
+
+    else if ($ionicHistory.backView()) {
+      $ionicHistory.goBack();
+    }
+    else {
+      $rootScope.backButtonPressedOnceToExit = true;
+      window.plugins.toast.showShortBottom(
+        "Press back button again to exit", function(a){}, function(b){}
+      );
+      setTimeout(function(){
+        $rootScope.backButtonPressedOnceToExit = false;
+      },2000);
+    }
+    e.preventDefault();
+    return false;
+  },101);    
 
 })
 
