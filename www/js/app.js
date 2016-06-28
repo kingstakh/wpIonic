@@ -17,6 +17,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }	
+  });
       
     // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
     var notificationOpenedCallback = function(jsonData) {
@@ -30,9 +31,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     // Update with your OneSignal AppId and googleProjectNumber before running.
     window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
                                    {googleProjectNumber: "743766706780"},
-                                   notificationOpenedCallback);
-  
-  });
+                                   notificationOpenedCallback);  
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
