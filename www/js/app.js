@@ -31,9 +31,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
                                    {googleProjectNumber: "743766706780"},
                                    notificationOpenedCallback);
-                                   
-    // Show an alert box if a notification comes in when the user is in your app.
-    window.plugins.OneSignal.enableInAppAlertNotification(false);    
+  
   });
 })
 
