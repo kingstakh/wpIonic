@@ -6,7 +6,7 @@
 // 'wpIonic.controllers' is found in controllers.js, wpIoinc.services is in services.js
 angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 'wpIonic.services', 'wpIonic.filters', 'ngCordova', 'angular-cache'])
 
-.run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
+.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -36,6 +36,8 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
                                    
     // Show an alert box if a notification comes in when the user is in your app.
     window.plugins.OneSignal.enableInAppAlertNotification(false);
+    
+    
 
 })
 
