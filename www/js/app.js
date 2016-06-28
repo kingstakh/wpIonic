@@ -36,28 +36,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
                                    
     // Show an alert box if a notification comes in when the user is in your app.
     window.plugins.OneSignal.enableInAppAlertNotification(false);
-    
-  // Back button function
-  $ionicPlatform.registerBackButtonAction(function(e){
-    if ($rootScope.backButtonPressedOnceToExit) {
-      ionic.Platform.exitApp();
-    }
 
-    else if ($ionicHistory.backView()) {
-      $ionicHistory.goBack();
-    }
-    else {
-      $rootScope.backButtonPressedOnceToExit = true;
-      window.plugins.toast.showShortBottom(
-        "Press back button again to exit", function(a){}, function(b){}
-      );
-      setTimeout(function(){
-        $rootScope.backButtonPressedOnceToExit = false;
-      },2000);
-    }
-    e.preventDefault();
-    return false;
-  },101);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, CacheFactoryProvider) {
