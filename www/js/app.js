@@ -8,18 +8,6 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 
 .run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
-  window.plugins.toast.show('Please wait.', 'long', 'center', function(a){}, function(b){});   
-  
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-    
   // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
   var notificationOpenedCallback = function(jsonData) {
     if (jsonData.additionalData) {
@@ -54,7 +42,18 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
     }
     e.preventDefault();
     return false;
-  },101);                                       
+  },101); 
+  
+
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }  
                                   
   });
 })
