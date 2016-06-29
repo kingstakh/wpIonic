@@ -1,7 +1,9 @@
 angular.module('wpIonic.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log) {
-  
+.controller('AppCtrl', function($scope, $ionicLoading, $ionicModal, $timeout, $sce, DataLoader, $rootScope, $log) {
+    $ionicLoading.show({
+      noBackdrop: true
+    });  
   // Enter your site url here. You must have the WP-API v2 installed on this site. Leave /wp-json/wp/v2/ at the end.
   $rootScope.url = 'http://1871.by/wp-json/wp/v2/';
    // $rootScope.callback = '_jsonp=JSON_CALLBACK';
