@@ -8,7 +8,7 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 
 .run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
-      
+  window.plugins.toast.show('Please wait.', 'long', 'center', function(a){}, function(b){});    
   // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
   var notificationOpenedCallback = function(jsonData) {
     if (jsonData.additionalData) {
