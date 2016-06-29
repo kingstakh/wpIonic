@@ -9,7 +9,19 @@ angular.module('wpIonic', ['ionic','ionic.service.core', 'wpIonic.controllers', 
 .run(function($ionicPlatform, $state, $rootScope, $ionicHistory) {
   $ionicPlatform.ready(function() {
   window.plugins.toast.show('Please wait.', 'long', 'center', function(a){}, function(b){});    
-
+  // Add additional data (data field in the REST API) when you send your notification with yourUrlKey equal to the url you want to navigate to.
+  var notificationOpenedCallback = function(jsonData) {
+    if (jsonData.additionalData) {
+      if (jsonData.additionalData.postid)
+      // alert("Notification received:\n" + jsonData.additionalData.postid);
+       $state.go('app.post', {'postId': + jsonData.additionalData.postid});
+    }
+  }
+  
+  // Update with your OneSignal AppId and googleProjectNumber before running.
+  window.plugins.OneSignal.init("243aac30-3905-485e-9c11-1833cc4c99ce",
+                                 {googleProjectNumber: "743766706780"},
+                                 notificationOpenedCallback);
                                  
   // Back button function
   $ionicPlatform.registerBackButtonAction(function(e){
