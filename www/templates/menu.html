@@ -37,7 +37,7 @@
         <ion-item class="item-accordion" menu-close
                   ng-show="isGroupShown(group)" 
                   ng-repeat="category in categories track by $index" ng-if="category.count > 0" href="#/app/categories/{{category.id}}" track>
-          {{category.name}}<span class="badge badge-assertive">{{category.count}}</span>
+          {{category.name}}<span class="badge badge-dark">{{category.count}}</span>
         </ion-item>
         </div>
         <ion-item class="item item-icon-left" nav-clear menu-close href="#/app/bookmarks">
