@@ -280,6 +280,20 @@ angular.module('wpIonic.controllers', [])
     
     }, 1000);
       
+  }
+  
+  // Accordion list
+  $scope.group = [];
+  
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
   };
     
 })
