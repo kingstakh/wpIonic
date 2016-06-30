@@ -33,12 +33,11 @@
         <div ng-controller="CategoriesCtrl">
          <ion-item class="item-stable"
                     ng-click="toggleGroup()"
-                    ng-class="{active: isGroupShown()}">
+                    ng-class="{isGroupShown()}">
               <i class="icon" ng-class="isGroupShown() ? 'ion-plus' : 'ion-minus'"></i>
-            &nbsp;
             Group
           </ion-item>
-          <ion-item class="item-accordion"
+          <ion-item class="item-accordion" menu-close
                     ng-repeat="category in categories track by $index" ng-if="category.count > 0" href="#/app/categories/{{category.id}}"
                     ng-hide="isGroupShown()">
             {{category.name}}
