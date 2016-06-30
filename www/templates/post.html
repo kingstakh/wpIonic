@@ -1,10 +1,10 @@
 <ion-view hide-nav-bar="false">
     <ion-nav-buttons side="right">
-      <button class="button button-clear button-small" ng-click="sharePost(post.link)">
-        <i class="icon ion-android-share-alt"></i>
-      </button>&nbsp
-      <button class="button button-clear button-small" ng-click="bookmarkItem(post.id)">
-        <i ng-class="{'icon ion-ios-star': bookmarked, 'icon ion-ios-star-outline': !bookmarked}"></i>
+      <button class="button button-clear" ng-click="sharePost(post.link)">
+        <i class="icon padding ion-android-share-alt"></i>
+      </button>
+      <button class="button button-clear" ng-click="bookmarkItem(post.id)">
+        <i ng-class="{'icon padding ion-ios-star': bookmarked, 'icon padding ion-ios-star-outline': !bookmarked}"></i>
       </button>	  
     </ion-nav-buttons>	
   <ion-content class="padding">
