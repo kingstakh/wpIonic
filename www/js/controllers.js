@@ -198,21 +198,6 @@ angular.module('wpIonic.controllers', [])
 
 .controller('CategoriesCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log ) {
 
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
-  $scope.toggleGroup = function(category) {
-    if ($scope.isGroupShown(category)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = category;
-    }
-  };
-  $scope.isGroupShown = function(category) {
-    return $scope.shownGroup === category;
-  };
-  
   var categoriesApi = $rootScope.url + 'categories';
 
   $scope.moreItems = false;
