@@ -26,6 +26,7 @@
           <i class="icon ion-ios-list-outline"></i>
           Posts
         </ion-item>
+        <div ng-controller="CategoriesCtrl">
         <ion-item class="item-stable item-icon-left item-icon-right"
                   ng-click="toggleGroup(group)"
                   ng-class="{active: isGroupShown(group)}">
@@ -33,11 +34,12 @@
           Categories
             <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>            
         </ion-item>
-        <ion-item ng-controller="CategoriesCtrl" class="item-accordion" nav-clear menu-close
+        <ion-item class="item-accordion" menu-close
                   ng-show="isGroupShown(group)" 
                   ng-repeat="category in categories track by $index" ng-if="category.count > 0" href="#/app/categories/{{category.id}}" track>
           {{category.name}}<span class="badge badge-assertive">{{category.count}}</span>
-        </ion-item>        
+        </ion-item>
+        </div>
         <ion-item class="item item-icon-left" nav-clear menu-close href="#/app/bookmarks">
           <i class="icon ion-ios-star-outline"></i>
           Bookmarks
