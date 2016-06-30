@@ -29,7 +29,21 @@
         <ion-item class="item item-icon-left" nav-clear menu-close href="#/app/categories">
           <i class="icon ion-ios-shuffle"></i>
           Categories
-        </ion-item>		
+        </ion-item>	
+        <div ng-controller="CategoriesCtrl">
+         <ion-item class="item-stable"
+                    ng-click="toggleGroup()"
+                    ng-class="{active: isGroupShown()}">
+              <i class="icon" ng-class="isGroupShown() ? 'ion-plus' : 'ion-minus'"></i>
+            &nbsp;
+            Group
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="category in categories track by $index" ng-if="category.count > 0" href="#/app/categories/{{category.id}}"
+                    ng-hide="isGroupShown()">
+            {{category.name}}
+          </ion-item>   
+          </div>
         <ion-item class="item item-icon-left" nav-clear menu-close href="#/app/bookmarks">
           <i class="icon ion-ios-star-outline"></i>
           Bookmarks
