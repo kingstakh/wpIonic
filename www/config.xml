@@ -28,6 +28,7 @@
 	<preference name="StatusBarOverlaysWebView" value="true" />
 	<preference name="keyboardDisplayRequiresUserAction" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
+	<preference name="LoadUrlTimeoutValue" value="700000" />
 
 	<icon src="icon.png" />
 	<content src="index.html" />
