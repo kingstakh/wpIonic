@@ -1,13 +1,12 @@
 <ion-view view-title="Posts">
-  <ion-content>
+  <ion-content lazy-scroll>
   <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 	<ion-list>
-		<ion-item class="item-icon-right" ng-repeat="post in posts track by $index" href="#/app/posts/{{post.id}}" track>
-			<!-- <img ng-if="post.featured_image" ng-src="{{post._embedded['http://v2.wp-api.org/attachment'][0][$index].source_url}}" class="alignleft" /> -->
+		<ion-item ng-repeat="post in posts track by $index" href="#/app/posts/{{post.id}}" track>
+			<img image-lazy-src="{{post.better_featured_image.media_details.sizes.medium.source_url}}" image-lazy-loader="android">
 			<h2 ng-bind-html="post.title.rendered"></h2>
 			<p ng-if="post.excerpt.rendered" ng-bind-html="post.excerpt.rendered"></p>
 			<p>Posted: <span am-time-ago="post.date"></span></p>
-			<i class="icon ion-chevron-right icon-accessory"></i>
 		</ion-item>
 	</ion-list>
 
