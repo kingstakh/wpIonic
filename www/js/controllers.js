@@ -102,7 +102,10 @@ angular.module('wpIonic.controllers', [])
 })
 
 .controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
-
+  
+  var vm = this;
+  vm.time = new Date();
+  
   var postsApi = $rootScope.url + 'posts';
 
   $scope.moreItems = false;
