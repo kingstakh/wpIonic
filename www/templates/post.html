@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="false">
+<ion-view hide-nav-bar="false" class="post-view">
     <ion-nav-buttons side="right">
       <button class="button button-clear" ng-click="sharePost(post.link)">
         <i class="icon padding ion-android-share-alt"></i>
@@ -20,7 +20,7 @@
   		<h2 ng-bind-html="post.title.rendered"></h2>
   		</div>
   		<img ng-src="{{post.better_featured_image.media_details.sizes.large.source_url}}" class="full-image" />
-  		<div class="item item-body" ng-if="content" ng-bind-html="content | html_filters"></div>
+  		<div class="item item-body post-text" ng-if="content" ng-bind-html="content | html_filters"></div>
     
 
       <!--div class="item tabs tabs-secondary tabs-icon-left">
@@ -55,8 +55,9 @@
         <a class="button button-icon icon icon-right ion-minus" smaller-text=".post-view .post-text">A</a>
       </div>
       <div class="col col-20 col-offset-20 col-center">
-        <a class="button button-icon icon ion-heart"></a>
+        <a ng-class="{'button button-icon icon ion-ios-heart-outline': bookmarked, 'button button-icon icon ion-ios-heart': !bookmarked}" ng-click="bookmarkItem(post.id)"></a>
       </div>
+      </button>	 
       <div class="col col-20 col-center">
         <a class="button button-icon icon ion-android-share-alt" ng-click="sharePost(post.link)"></a>
       </div>
