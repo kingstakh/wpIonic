@@ -4,7 +4,7 @@
         <i class="icon padding ion-android-share-alt"></i>
       </button>
       <button class="button button-clear" ng-click="bookmarkItem(post.id)">
-        <i ng-class="{'icon padding ion-ios-star': bookmarked, 'icon padding ion-ios-star-outline': !bookmarked}"></i>
+        <i ng-class="{'button button-icon icon ion-ios-heart': bookmarked, 'button button-icon icon ion-ios-heart-outline': !bookmarked}"></i>
       </button>	  
     </ion-nav-buttons>	
   <ion-content class="padding">
@@ -46,21 +46,4 @@
         </ion-item>
       </ion-list-->
   </ion-content>
-  <ion-footer-bar class="post-footer bar bar-footer bar-dark">
-    <div class="row">
-      <div class="col col-20 col-center">
-
-      </div>
-      <div class="col col-20 col-center">
-
-      </div>
-      <div class="col col-20 col-offset-20 col-center">
-        <a ng-class="{'button button-icon icon ion-ios-heart': bookmarked, 'button button-icon icon ion-ios-heart-outline': !bookmarked}" ng-click="bookmarkItem(post.id)"></a>
-      </div>
-      </button>	 
-      <div class="col col-20 col-center">
-        <a class="button button-icon icon ion-android-share-alt" ng-click="sharePost(post.link)"></a>
-      </div>
-    </div>
-  </ion-footer-bar>  
 </ion-view>
