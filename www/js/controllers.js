@@ -101,10 +101,14 @@ angular.module('wpIonic.controllers', [])
 
 })
 
-.controller('PostsCtrl', function( $scope, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
+.controller('PostsCtrl', function( $scope, $state, $http, DataLoader, $ionicLoading, $timeout, $ionicSlideBoxDelegate, $rootScope, $log) {
   
   var vm = this;
   vm.time = new Date();
+  
+  $scope.gotoPost = function(postid){
+    $state.go('app.post', {'postId': + postid});
+  };
   
   var postsApi = $rootScope.url + 'posts';
 
