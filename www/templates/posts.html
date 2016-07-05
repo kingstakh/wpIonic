@@ -9,7 +9,8 @@
 		</div>
 		<div class="item item-body">
 			<span>{{post.pure_taxonomies.categories[0].name}}</span>
-			<p><strong>{{post.title.rendered}}</strong> {{post.excerpt.rendered | limitTo: 120}}</p>
+			<h1 ng-bind-html="post.title.rendered"></h1>
+			<span ng-bind-html="post.excerpt.rendered | limitTo: 120"></span>
 			<span am-time-ago="post.date"></span>
 		</div>
 	</div>
