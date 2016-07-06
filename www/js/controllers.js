@@ -357,7 +357,7 @@ angular.module('wpIonic.controllers', [])
       DataLoader.get( categoryApi + '&page=' + pg ).then(function(response) {
 
         angular.forEach( response.data, function( value, key ) {
-          $scope.posts.push(value);
+          $scope.category.push(value);
         });
 
         if( response.data.length <= 0 ) {
